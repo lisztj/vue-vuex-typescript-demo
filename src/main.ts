@@ -10,7 +10,7 @@ import store from './store'
 
 import { currency } from './currency'
 
-import { Header, Cell, Checklist, PaletteButton, Button, Swipe, SwipeItem,Field,Actionsheet } from 'mint-ui'
+import { Header, Cell, Checklist, PaletteButton, Button, Swipe, SwipeItem,Field,Actionsheet,Tabbar, TabItem,DatetimePicker,Picker } from 'mint-ui'
 Vue.component(Header.name, Header)
 Vue.component(Cell.name, Cell)
 Vue.component(Checklist.name, Checklist)
@@ -20,6 +20,10 @@ Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 Vue.component(Field.name, Field)
 Vue.component(Actionsheet.name, Actionsheet)
+Vue.component(Tabbar.name, Tabbar)
+Vue.component(TabItem.name, TabItem)
+Vue.component(DatetimePicker.name, DatetimePicker)
+Vue.component(Picker.name, Picker)
 // Vue.use(MintUI)
 
 Vue.filter('currency', currency)
