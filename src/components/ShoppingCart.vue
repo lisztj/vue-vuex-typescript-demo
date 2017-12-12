@@ -1,5 +1,11 @@
 <template>
   <div>
+      <mt-header title="多个按钮">
+  <router-link to="/" slot="left">
+    <mt-button icon="back">返回</mt-button>
+  </router-link>
+  <mt-button icon="more" slot="right" :actions="actions" v-model="sheetVisible"></mt-button>
+</mt-header>
         <mt-cell title="商品" is-link>
   <span></span>
 </mt-cell>
@@ -16,6 +22,11 @@
     <product-list></product-list>
     <hr>
     <cart></cart>
+
+    <mt-actionsheet
+  :actions="actions"
+  v-model="sheetVisible">
+</mt-actionsheet>
   </div>
 </template>
 
@@ -26,4 +37,5 @@ import Cart from './Cart.vue'
 export default Vue.extend({
   components: { ProductList, Cart }
 })
+
 </script>

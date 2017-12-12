@@ -4,6 +4,6 @@
         "require": true
     },
     "rules": {
-        "no-consecutive-blank-lines": true
+        "no-consecutive-blank-lines": false
     }
 }

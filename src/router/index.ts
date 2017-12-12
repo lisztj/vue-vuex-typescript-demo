@@ -13,7 +13,7 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/vuex',
+      path: '/home',
       component: ShoppingCart
     }
   ]

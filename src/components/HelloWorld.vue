@@ -1,8 +1,21 @@
 <template>
   <div class="hello">
+    <mt-swipe :auto="4000">
+  <mt-swipe-item><img src="../assets/logo.png"></mt-swipe-item>
+  <mt-swipe-item>2</mt-swipe-item>
+  <mt-swipe-item>3</mt-swipe-item>
+</mt-swipe>
+
     <h1>{{ msg }}</h1>
-    <h2>Vuex</h2>
-    <router-link to="/vuex">ShoppingCart Example</router-link>
+<mt-field label="手机号码" placeholder="输入手机号码" type="tel" v-model="username"> </mt-field>
+<mt-field label="密码" placeholder="输入密码" type="password" v-modal="password"></mt-field>
+<mt-field label="验证码" placeholder="输入验证码" v-model="captcha">
+  <img src="../assets/img.png" height="45px" width="100px">
+</mt-field>
+<div class="login-k">
+<mt-button type="primary" class="mint-button--large" v-on:click="login">登   录</mt-button>
+</div>
+    <!-- <router-link to="/vuex">ShoppingCart Example</router-link> -->
   </div>
 </template>
 
@@ -17,10 +30,15 @@ export default Vue.extend({
     }
   },
   mounted () {
-    this.hello()
-    const a = '11'
+    this.hello();
+    /**用户名 */
+    const username='13921593';
+    
   },
   methods: {
+    login (){
+      this.$router.push({ path: '/home' })
+    },
     hello () {
       console.log('Hello world')
     }
@@ -30,7 +48,14 @@ export default Vue.extend({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+.mint-button--large {
+    width: 100%;
+    height: 3rem;
+}
+.login-k{
+padding: 1.5rem .5rem;
+}
+/* h1, h2 {
   font-weight: normal;
 }
 
@@ -46,5 +71,5 @@ li {
 
 a {
   color: #42b983;
-}
+} */
 </style>
