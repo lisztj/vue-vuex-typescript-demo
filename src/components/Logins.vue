@@ -36,7 +36,7 @@ import Vue from 'vue'
             if (value < 18) {
               callback(new Error('必须年满18岁'));
             } else {
-              callback();
+              callback();                 
             }
           }
         }, 1000);
