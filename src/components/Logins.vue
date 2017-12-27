@@ -1,110 +1,82 @@
 
 <template>
 
-<el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="100px" class="demo-ruleForm">
-  <el-form-item label="密码" prop="pass">
-    <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
+<el-form ref="ruleForm2" :model="ruleForm2" status-icon :rules="rules2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+  <h3 class="title">系统登录</h3>
+  <el-form-item label="" prop="userName">
+    <el-input type="text" name="userName" v-model="ruleForm2.userName" auto-complete="off" placeholder="用户名"></el-input>
   </el-form-item>
-  <el-form-item label="确认密码" prop="checkPass">
-    <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
+  <el-form-item label="" prop="checkPass">
+    <el-input type="password" name="checkPass" v-model="ruleForm2.checkPass" auto-complete="off"  placeholder="密码"></el-input>
   </el-form-item>
-  <el-form-item label="年龄" prop="age">
-    <el-input v-model.number="ruleForm2.age"></el-input>
-  </el-form-item>
-  <el-form-item>
-    <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
-    <el-button @click="resetForm('ruleForm2')">重置</el-button>
+  <el-checkbox v-model="checked" name="checked" checked class="remember">记住密码</el-checkbox>
+   <el-form-item style="width:100%;">
+    <el-button type="primary" style="width:100%;" @click.native.prevent="submitForm" :disabled="true" :loading="logining">登录</el-button>
   </el-form-item>
 </el-form>
 </template>
 <script lang="ts">
-import Vue from 'vue'
-  export default {
-      name: 'Logins',
-      mounted () {
-          
+export default {
+  
+  data() {
+    return {
+      logining: false,
+      ruleForm2: {
+        userName: "",
+        checkPass: ""
       },
-    data() {
-      var checkAge = (rule:any, value:any, callback:any) => {
-        if (!value) {
-          return callback(new Error('年龄不能为空'));
-        }
-        setTimeout(() => {
-          if (!Number.isInteger(value)) {
-            callback(new Error('请输入数字值'));
-          } else {
-            if (value < 18) {
-              callback(new Error('必须年满18岁'));
-            } else {
-              callback();                 
-            }
-          }
-        }, 1000);
-      };
-   
-      var validatePass = (rule:any, value:any, callback:any) => {
-        if (value === '') {
-          callback(new Error('请输入密码'));
-        } else {
-          if (this.ruleForm2.checkPass !== '') {
-            this.$refs.ruleForm2.validateField('checkPass');
-          }
-          callback();
-        }
-      };
-      var validatePass2 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error('请再次输入密码'));
-        } else if (value !== this.ruleForm2.pass) {
-          callback(new Error('两次输入密码不一致!'));
-        } else {
-          callback();
-        }
-      };
-      return {
-        ruleForm2: {
-          pass: '',
-          checkPass: '',
-          age: ''
-        },
-        rules2: {
-          pass: [
-            { validator: validatePass, trigger: 'blur' }
-          ],
-          checkPass: [
-            { validator: validatePass2, trigger: 'blur' }
-          ],
-          age: [
-            { validator: checkAge, trigger: 'blur' }
-          ]
-        }
-      };
-    },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+      rules2: {
+        userName: [
+          { required: true, message: "请输入账号", trigger: "blur" }
+          //{ validator: validaePass }
+        ],
+        checkPass: [
+          { required: true, message: "请输入密码", trigger: "blur" }
+          //{ validator: validaePass2 }
+        ]
       },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
-      }
+      checked: true
+    };
+  },
+  methods: {
+    submitForm(ruleForm2: any) {
+      
+      // var _this = this;
+      //this.$refs.ruleForm2.validate(valid => {
+        // if (valid) {
+        //   alert("submit!");
+        // } else {
+        //   console.log("error submit!!");
+        //   return false;
+        // }
+      //});
     }
   }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.mint-button--large {
-  width: 100%;
-  height: 3rem;
+<style lang="css" scoped>
+.login-container {
+  /*box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);*/
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  background-clip: padding-box;
+  margin: 180px auto;
+  width: 350px;
+  padding: 35px 35px 15px 35px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 0 25px #cac6c6;
+  display: block;
 }
-.login-k {
-  padding: 1.5rem 0.5rem;
+.title {
+  margin: 0px auto 40px auto;
+  text-align: center;
+  color: #505458;
+}
+.remember {
+  margin: 0px 0px 35px 0px;
 }
 </style>
