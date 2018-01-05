@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <mt-swipe :auto="4000">
+    <!-- <mt-swipe :auto="4000">
   <mt-swipe-item><img src="../assets/logo.png"></mt-swipe-item>
   <mt-swipe-item>2</mt-swipe-item>
   <mt-swipe-item>3</mt-swipe-item>
@@ -9,11 +9,11 @@
     <h1>{{ msg }}</h1>
 <mt-field label="手机号码" placeholder="输入手机号码" type="tel" v-model="username"> </mt-field>
 <mt-field label="密码" placeholder="输入密码" type="password" v-modal="password"></mt-field>
-<mt-field label="验证码" placeholder="输入验证码" v-model="captcha">
+<mt-field label="验证码" placeholder="输入验证码" v-model="captcha"> -->
   <img src="../assets/img.png" height="45px" width="100px">
-</mt-field>
+<!-- </mt-field> -->
 <div class="login-k">
-<mt-button type="primary" class="mint-button--large" v-on:click="login">登   录</mt-button>
+<!-- <mt-button type="primary" class="mint-button--large" v-on:click="login">登   录</mt-button> -->
 </div>
     <!-- <router-link to="/vuex">ShoppingCart Example</router-link> -->
   </div>
